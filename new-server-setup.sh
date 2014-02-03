@@ -5,6 +5,7 @@
 #First Run script to set network and hostname with iptables ssh access, Join Domain, Check and configure AIDE database
 #
 #
+#
 #clear the screen for nice menus
 clear
 #Define base files and prepare these files should already exist in the base image
