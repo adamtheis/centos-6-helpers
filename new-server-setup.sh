@@ -1,7 +1,13 @@
 #!/bin/bash
+#this script was developed for speeding up the deployment of centOS 6 cloned virtual machines
+#this script assumes iptables are installed and configured in the base image.
+#this script assumes a sysadmin user account is present before joining and active directory controlled domain.
 #First Run script to set network and hostname with iptables ssh access, Join Domain, Check and configure AIDE database
+#
+#
+#clear the screen for nice menus
 clear
-#Define base files and prepare for default files
+#Define base files and prepare these files should already exist in the base image
 hosts=/etc/hosts
 resolv=/etc/resolv.conf
 iptables=/etc/sysconfig/iptables
@@ -106,7 +112,7 @@ Hostname        = $hostname
                         echo 'IPV6_AUTOCONF=no' >> $network
 
                         #Configure IPtables for ssh access
-                        sed -i "s/172.16.99.99/$ipaddress/g" $iptables
+                        sed -i "s/THISIP/$ipaddress/g" $iptables
 
                         #restart the services
                         service iptables restart
